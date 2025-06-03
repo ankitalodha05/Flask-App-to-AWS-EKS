@@ -93,10 +93,11 @@ resource "aws_eks_node_group" "default" {
   ami_type       = var.ami_type
 
   # Attach SG for HTTP (and optionally SSH if needed)
-  remote_access {
-    ec2_ssh_key               = var.ssh_key_name
-    source_security_group_ids = [var.eks_node_sg_id]
-  }
+# remote_access {
+#   ec2_ssh_key               = var.ssh_key_name
+#   source_security_group_ids = [var.eks_node_sg_id]
+# }
+
 
   tags = merge(var.tags, {
     "eks:nodegroup-name" = "${var.cluster_name}-nodegroup"
